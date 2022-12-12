@@ -1,0 +1,396 @@
+##
+# You should look at the following URL's in order to grasp a solid understanding
+# of Nginx configuration files in order to fully unleash the power of Nginx.
+# https://www.nginx.com/resources/wiki/start/
+# https://www.nginx.com/resources/wiki/start/topics/tutorials/config_pitfalls/
+# https://wiki.debian.org/Nginx/DirectoryStructure
+#
+# In most cases, administrators will remove this file from sites-enabled/ and
+# leave it as reference inside of sites-available where it will continue to be
+# updated by the nginx packaging team.
+#
+# This file will automatically load configuration files provided by other
+# applications, such as Drupal or Wordpress. These applications will be made
+# available underneath a path with that package name, such as /drupal8.
+#
+# Please see /usr/share/doc/nginx-doc/examples/ for more detailed examples.
+##
+
+# Default server configuration
+#
+server {
+	listen 80 default_server;
+	listen [::]:80 default_server;
+
+	root /var/www/html;
+
+	# Add index.php to the list if you are using PHP
+	index index.html index.htm index.nginx-debian.html;
+
+	server_name jaranzie.cse356.compas.cs.stonybrook.edu;
+	add_header X-CSE356 6306bbbd2988c22186b26cb2;
+
+	# location /users/logout  {
+	# 	# First attempt to serve request as file, then
+	# 	# as directory, then fall back to displaying a 404.
+	# 	proxy_pass http://localhost:7777;
+	# }
+
+	upstream server0 {
+		server 209.151.155.86:7777
+		keepalive 128;
+	}
+	upstream server1 {
+		server 209.151.155.86:7778
+		keepalive 128;
+	}
+	upstream server2 {
+		server 209.151.155.86:7779
+		keepalive 128;
+	}
+	upstream server3 {
+		server 209.151.155.86:7780
+		keepalive 128;
+	}
+	upstream server4 {
+		server 209.151.155.86:7781
+		keepalive 128;
+	}
+	upstream server5 {
+		server 209.151.155.86:7782
+		keepalive 128;
+	}
+	upstream server6 {
+		server 209.151.155.86:7783
+		keepalive 128;
+	}
+	upstream server7 {
+		server 209.151.155.86:7784
+		keepalive 128;
+	}
+	upstream server8 {
+		server 209.151.155.86:7785
+		keepalive 128;
+	}
+	upstream server9 {
+		server 209.94.56.55:7786
+		keepalive 128;
+	}
+	upstream server10 {
+		server 209.151.155.86:7787
+		keepalive 128;
+	}
+	upstream server11 {
+		server 209.94.56.55:7788
+		keepalive 128;
+	}
+	upstream server12 {
+		server 209.151.155.86:7789
+		keepalive 128;
+	}
+	upstream server13 {
+		server 209.94.56.55:7790
+		keepalive 128;
+	}
+	upstream server14 {
+		server 209.151.155.86:7791
+		keepalive 128;
+	}
+	upstream server15 {
+		server 209.94.56.55:7792
+		keepalive 128;
+	}
+
+	location ~* /api/connect/00.* {
+                proxy_pass http://209.151.155.86:7777;
+                proxy_buffering off;
+                proxy_cache off; 
+                proxy_set_header Host $host;
+        }
+        location ~* /api/.*/00.*  {
+                        # First attempt to serve request as file, then
+                        # as directory, then fall back to displaying a 404.
+                        proxy_pass http://server0;
+                        proxy_http_version 1.1;
+                        proxy_set_header Connection "";
+        }
+
+        location ~* /api/connect/01.* {
+                proxy_pass http://209.94.56.55:7778;
+                proxy_buffering off;
+                proxy_cache off; 
+                proxy_set_header Host $host;
+        }
+        location ~* /api/.*/01.*  {
+                        # First attempt to serve request as file, then
+                        # as directory, then fall back to displaying a 404.
+                        proxy_pass http://server1;
+                        proxy_http_version 1.1;
+                        proxy_set_header Connection "";
+        }
+
+        location ~* /api/connect/02.* {
+                proxy_pass http://209.151.155.86:7779;
+                proxy_buffering off;
+                proxy_cache off; 
+                proxy_set_header Host $host;
+        }
+        location ~* /api/.*/02.*  {
+                        # First attempt to serve request as file, then
+                        # as directory, then fall back to displaying a 404.
+                        proxy_pass http://server2;
+                        proxy_http_version 1.1;
+                        proxy_set_header Connection "";
+        }
+
+        location ~* /api/connect/03.* {
+                proxy_pass http://209.94.56.55:7780;
+                proxy_buffering off;
+                proxy_cache off; 
+                proxy_set_header Host $host;
+        }
+        location ~* /api/.*/03.*  {
+                        # First attempt to serve request as file, then
+                        # as directory, then fall back to displaying a 404.
+                proxy_pass http://server3; 
+                        proxy_http_version 1.1;
+                        proxy_set_header Connection "";
+        }
+
+        location ~* /api/connect/04.* {
+                proxy_pass http://209.151.155.86:7781;
+                proxy_buffering off;
+                proxy_cache off; 
+                proxy_set_header Host $host;
+        }
+        location ~* /api/.*/4.*  {
+                        # First attempt to serve request as file, then
+                        # as directory, then fall back to displaying a 404.
+                proxy_pass http://server4;
+                        proxy_http_version 1.1;
+                        proxy_set_header Connection "";
+        }
+
+
+	location ~* /api/connect/05.* {
+                proxy_pass http://209.94.56.55:7782;
+                proxy_buffering off;
+                proxy_cache off; 
+                proxy_set_header Host $host;
+        }
+        location ~* /api/.*/05.*  {
+                        # First attempt to serve request as file, then
+                        # as directory, then fall back to displaying a 404.
+                proxy_pass http://server5; 
+                        proxy_http_version 1.1;
+                        proxy_set_header Connection "";
+        }
+
+        location ~* /api/connect/06.* {
+                proxy_pass http://209.151.155.86:7783;
+                proxy_buffering off;
+                proxy_cache off; 
+                proxy_set_header Host $host;
+        }
+        location ~* /api/.*/06.*  {
+                        # First attempt to serve request as file, then
+                        # as directory, then fall back to displaying a 404.
+                proxy_pass http://server6; 
+                        proxy_http_version 1.1;
+                        proxy_set_header Connection "";
+        }
+
+        location ~* /api/connect/07.* {
+                proxy_pass http://209.94.56.55:7784;
+                proxy_buffering off;
+                proxy_cache off; 
+                proxy_set_header Host $host;
+        }
+        location ~* /api/.*/07.*  {
+                        # First attempt to serve request as file, then
+                        # as directory, then fall back to displaying a 404.
+                proxy_pass http://server7; 
+                        proxy_http_version 1.1;
+                        proxy_set_header Connection "";
+        }
+
+        location ~* /api/connect/08.* {
+                proxy_pass http://209.151.155.86:7785;
+                proxy_buffering off;
+                proxy_cache off; 
+                proxy_set_header Host $host;
+        }
+        location ~* /api/.*/08.*  {
+                        # First attempt to serve request as file, then
+                        # as directory, then fall back to displaying a 404.
+                proxy_pass http://server8; 
+                        proxy_http_version 1.1;
+                        proxy_set_header Connection "";
+        }
+
+        location ~* /api/connect/09.* {
+                proxy_pass http://209.151.155.86:7786;
+                proxy_buffering off;
+                proxy_cache off; 
+                proxy_set_header Host $host;
+        }
+        location ~* /api/.*/09.*  {
+                        # First attempt to serve request as file, then
+                        # as directory, then fall back to displaying a 404.
+                proxy_pass http://server9; 
+                        proxy_http_version 1.1;
+                        proxy_set_header Connection "";
+        }
+
+		location ~* /api/connect/10.* {
+                proxy_pass http://209.151.155.86:7787;
+                proxy_buffering off;
+                proxy_cache off; 
+                proxy_set_header Host $host;
+        }
+        location ~* /api/.*/10.*  {
+                        # First attempt to serve request as file, then
+                        # as directory, then fall back to displaying a 404.
+                proxy_pass http://server10; 
+                        proxy_http_version 1.1;
+                        proxy_set_header Connection "";
+        }
+
+		location ~* /api/connect/11.* {
+                proxy_pass http://209.151.155.86:7788;
+                proxy_buffering off;
+                proxy_cache off; 
+                proxy_set_header Host $host;
+        }
+        location ~* /api/.*/11.*  {
+                        # First attempt to serve request as file, then
+                        # as directory, then fall back to displaying a 404.
+                proxy_pass http://server11; 
+                        proxy_http_version 1.1;
+                        proxy_set_header Connection "";
+        }
+
+		location ~* /api/connect/12.* {
+                proxy_pass http://209.151.155.86:7789;
+                proxy_buffering off;
+                proxy_cache off; 
+                proxy_set_header Host $host;
+        }
+        location ~* /api/.*/12.*  {
+                        # First attempt to serve request as file, then
+                        # as directory, then fall back to displaying a 404.
+                proxy_pass http://server12; 
+                        proxy_http_version 1.1;
+                        proxy_set_header Connection "";
+        }
+
+		location ~* /api/connect/13.* {
+                proxy_pass http://209.151.155.86:7790;
+                proxy_buffering off;
+                proxy_cache off; 
+                proxy_set_header Host $host;
+        }
+        location ~* /api/.*/13.*  {
+                        # First attempt to serve request as file, then
+                        # as directory, then fall back to displaying a 404.
+                proxy_pass http://server13; 
+                        proxy_http_version 1.1;
+                        proxy_set_header Connection "";
+        }
+
+		location ~* /api/connect/14.* {
+                proxy_pass http://209.151.155.86:7791;
+                proxy_buffering off;
+                proxy_cache off; 
+                proxy_set_header Host $host;
+        }
+        location ~* /api/.*/14.*  {
+                        # First attempt to serve request as file, then
+                        # as directory, then fall back to displaying a 404.
+                proxy_pass http://server14; 
+                        proxy_http_version 1.1;
+                        proxy_set_header Connection "";
+        }
+
+		location ~* /api/connect/15.* {
+                proxy_pass http://209.151.155.86:7792;
+                proxy_buffering off;
+                proxy_cache off; 
+                proxy_set_header Host $host;
+        }
+        location ~* /api/.*/15.*  {
+                        # First attempt to serve request as file, then
+                        # as directory, then fall back to displaying a 404.
+                proxy_pass http://server15; 
+                        proxy_http_version 1.1;
+                        proxy_set_header Connection "";
+        }
+
+
+
+
+	
+	
+	
+	location /collection/  {
+		# First attempt to serve request as file, then
+		# as directory, then fall back to displaying a 404.
+		proxy_pass http://194.113.74.245:3000;
+	}
+	location /users/  {
+		# First attempt to serve request as file, then
+		# as directory, then fall back to displaying a 404.
+		proxy_pass http://209.94.56.201:3000;
+	}
+
+	location /media/  {
+		proxy_pass http://209.94.59.74:1234;
+	}	
+	location /index/ {
+		proxy_pass http://209.151.155.187:6969;
+	}
+
+	location /edit/ {
+		# First attempt to serve request as file, then
+		# as directory, then fall back to displaying a 404.
+		#root /var/www/html/edit;
+		try_files /edit/index.html =402;
+	}
+	location /home {
+		# First attempt to serve request as file, then
+		# as directory, then fall back to displaying a 404.
+		#root /var/www/html/home/;
+		try_files /home/index.html =401;
+	}
+	location /library/ {
+		# First attempt to serve request as file, then
+		# as directory, then fall back to displaying a 404.
+	#	root /var/www/html/library;
+		try_files /library/crdt.js =401;
+	}
+
+	location / {
+		try_files $uri $uri/ =404;
+	}
+
+}
+
+
+# Virtual Host configuration for example.com
+#
+# You can move that to a different file under sites-available/ and symlink that
+# to sites-enabled/ to enable it.
+#
+#server {
+#	listen 80;
+#	listen [::]:80;
+#
+#	server_name example.com;
+#
+#	root /var/www/example.com;
+#	index index.html;
+#
+#	location / {
+#		try_files $uri $uri/ =404;
+#	}
+#}

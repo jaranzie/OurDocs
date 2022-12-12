@@ -1,0 +1,44 @@
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["debian-openssl-3.0.x"]
+}
+
+model user {
+  id        String      @id @default(auto()) @map("_id") @db.ObjectId
+  name      String
+  email     String      @unique
+  password  String
+}
+
+model inactiveuser {
+  id        String      @id @default(auto()) @map("_id") @db.ObjectId
+  name      String
+  email     String      @unique
+  password  String
+  authkey   String
+}
+
+model document {
+  id        String      @id @default(auto()) @map("_id") @db.ObjectId
+  name      String
+  update    Bytes
+}
+
+model session {
+    id        String      @id @default(auto()) @map("_id") @db.ObjectId
+    sessionId String      @unique
+    userId    String
+    name      String
+}
+
+model image {
+    id        String      @id @default(auto()) @map("_id") @db.ObjectId
+    mime      String
+    url       String
+}
